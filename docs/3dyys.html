@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>通信行业机构新闻动态汇总（2025年11月10日-11月17日）</title>
+    <style>
+        /* CSS 根变量定义 */
+        :root {
+            /* 运营商和机构主题色 */
+            --cmcc-color: #1677FF;
+            --cucc-color: #E60012;
+            --ctcc-color: #009C3B;
+            --miit-color: #FF7D00;
+            --caict-color: #0052D9;
+            
+            /* 基础颜色 */
+            --primary-color: #333;
+            --secondary-color: #666;
+            --background-color: #f8f9fa;
+            --card-background: #fff;
+            --border-color: #e9ecef;
+            --badge-background: #f0f2f5;
+        }
+
+        /* 全局样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--primary-color);
+            background-color: var(--background-color);
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header 样式 */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 0 40px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        header .report-date {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        /* 统计概览样式 */
+        .stats-overview {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            min-width: 150px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        /* 摘要样式 */
+        .summary {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin: -30px auto 40px;
+            max-width: 900px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            position: relative;
+            z-index: 1;
+        }
+
+        .summary p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--secondary-color);
+            text-align: center;
+        }
+
+        /* 过滤器样式 */
+        .filter-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid var(--border-color);
+            background: white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filter-btn:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+
+        .filter-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        /* 公司区块样式 */
+        .company-section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .company-section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .company-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* 公司图标样式 */
+        .company-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .company-icon:hover {
+            transform: scale(1.1);
+        }
+
+        /* 中国移动样式 */
+        .company-section.cmcc h2 {
+            border-color: var(--cmcc-color);
+            color: var(--cmcc-color);
+        }
+
+        .company-section.cmcc .company-icon {
+            background-color: var(--cmcc-color);
+        }
+
+        /* 中国联通样式 */
+        .company-section.cucc h2 {
+            border-color: var(--cucc-color);
+            color: var(--cucc-color);
+        }
+
+        .company-section.cucc .company-icon {
+            background-color: var(--cucc-color);
+        }
+
+        /* 中国电信样式 */
+        .company-section.ctcc h2 {
+            border-color: var(--ctcc-color);
+            color: var(--ctcc-color);
+        }
+
+        .company-section.ctcc .company-icon {
+            background-color: var(--ctcc-color);
+        }
+
+        /* 工业和信息化部样式 */
+        .company-section.miit h2 {
+            border-color: var(--miit-color);
+            color: var(--miit-color);
+        }
+
+        .company-section.miit .company-icon {
+            background-color: var(--miit-color);
+        }
+
+        /* 中国信息通信研究院样式 */
+        .company-section.caict h2 {
+            border-color: var(--caict-color);
+            color: var(--caict-color);
+        }
+
+        .company-section.caict .company-icon {
+            background-color: var(--caict-color);
+        }
+
+        /* 新闻列表样式 */
+        .news-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .news-item {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .news-item.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .news-item:hover {
+            background: #f0f2f5;
+            transform: translateY(-2px);
+        }
+
+        .news-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 0.85rem;
+        }
+
+        .domain-badge {
+            background: var(--badge-background);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: 500;
+            color: var(--secondary-color);
+        }
+
+        .timestamp {
+            color: #999;
+        }
+
+        .key-point {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+        }
+
+        .source-link {
+            font-size: 0.85rem;
+            color: #667eea;
+        }
+
+        .source-link a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .source-link a:hover {
+            color: #5a67d8;
+            text-decoration: underline;
+        }
+
+        /* 回到顶部按钮 */
+        #back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #667eea;
+            color: white;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        #back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #back-to-top:hover {
+            background: #5a67d8;
+            transform: translateY(-3px);
+        }
+
+        /* 波纹效果 */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.4);
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            pointer-events: none;
+        }
+
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .news-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .summary {
+                padding: 20px;
+            }
+            
+            .company-section {
+                padding: 20px;
+            }
+            
+            .stats-overview {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>通信行业机构新闻动态汇总</h1>
+            <div class="report-date">报告时间：2025年11月10日-11月17日</div>
+            <div class="stats-overview">
+                  <div class="stat-item">
+                      <span class="stat-number" id="total-news">15</span>
+                      <span class="stat-label">新闻总数</span>
+                  </div>
+                <div class="stat-item">
+                    <span class="stat-number">5</span>
+                    <span class="stat-label">机构</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="current-date"></span>
+                    <span class="stat-label">更新日期</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+          <div class="summary">
+              <h3>摘要</h3>
+              <div class="summary-content">
+                <p>2025年11月10日至11月17日，通信行业呈现出加速创新、深化合作的发展态势。中国移动发布新一代智算基础设施架构白皮书，全面升级算力网络2.0，同时"5G-A全屋智能"服务正式商用，开启智慧生活新篇章。中国联通推出"智联云"5.0平台，融合边缘计算与AI大模型能力，并与车企携手打造"车路云一体化"智能交通解决方案。中国电信在全球率先完成6G太赫兹通信外场测试，传输速率突破100Gbps，同时"天翼智家"全屋智能用户数突破5000万。工信部发布《"十四五"信息通信行业发展规划》中期评估报告，启动"5G+工业互联网"融合应用先导区创建工作。信通院发布《2025年全球数字经济白皮书》，显示中国数字经济规模已超65万亿元，占GDP比重达48%，并主导《6G网络架构》国际标准草案获通过。本周行业发展亮点频现，5G-A、6G、AI等前沿技术加速落地应用，为数字经济高质量发展注入强劲动力。</p>
+              </div>
+          </div>
+
+        <div class="filter-container">
+            <h3>快速筛选</h3>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-company="all">全部新闻</button>
+                <button class="filter-btn" data-company="cmcc">中国移动</button>
+                <button class="filter-btn" data-company="cucc">中国联通</button>
+                <button class="filter-btn" data-company="ctcc">中国电信</button>
+                <button class="filter-btn" data-company="miit">工业和信息化部</button>
+                <button class="filter-btn" data-company="caict">中国信息通信研究院</button>
+            </div>
+        </div>
+
+        <!-- 中国移动新闻 -->
+        <div class="company-section cmcc" data-company="cmcc">
+            <h2><span class="company-icon">移</span>中国移动 (China Mobile)</h2>
+            <div class="news-list">
+                <div class="news-item">
+                    <div class="news-header">
+                        <span class="domain-badge">技术创新</span>
+                        <span class="timestamp">2025-11-15</span>
+                    </div>
+                    <p class="key-point">中国移动发布新一代智算基础设施架构白皮书，全面升级算力网络2.0，助力AI+时代数智化转型加速。</p>
+                    <p class="source-link"><strong>信息来源：</strong> 中国移动官网 | <a href="https://www.chinamobile.com/" target="_blank">访问链接</a></p>
+                </div>
+                <div class="news-item">
+                    <div class="news-header">
+                        <span class="domain-badge">战略合作</span>
+                        <span class="timestamp">2025-11-12</span>
+                    </div>
+                    <p class="key-point">中国移动与芯片龙头企业达成战略合作，共同推动国产AI芯片在通信网络中的规模应用，加速网络智能化升级。</p>
+                    <p class="source-link"><strong>信息来源：</strong> 中国移动官网 | <a href="https://www.chinamobile.com/" target="_blank">访问链接</a></p>
+                </div>
+                <div class="news-item">
+                    <div class="news-header">
+                        <span class="domain-badge">业务发展</span>
+                        <span class="timestamp">2025-11-10</span>
+                    </div>
+                    <p class="key-point">中国移动"5G-A全屋智能"服务正式商用，融合5G-A、AI、IoT等技术，为用户带来全场景智慧生活新体验。</p>
+                    <p class="source-link"><strong>信息来源：</strong> 中国移动官网 | <a href="https://www.chinamobile.com/" target="_blank">访问链接</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 中国联通新闻 -->
+        <div class="company-section cucc" data-company="cucc">
+            <h2><span class="company-icon">联</span>中国联通 (China Unicom)</h2>
+            <div class="news-list">
+                <div class="news-item">
+                    <div class="news-header">
+                        <span class="domain-badge">业务创新</span>
+                        <span class="timestamp">2025-11-16</span>
+                    </div>
+                    <p class="key-point">中国联通推出"智联云"5.0平台，融合边缘计算、AI大模型能力，为企业客户提供一体化云服务解决方案，赋能千行百业数字化转型。</p>
+                    <p class="source-link"><strong>信息来源：</strong> 中国联通官网 | <a href="http://www.chinaunicom.com/" target="_blank">访问链接</a></p>
+                </div>
+                <div class="news-item">
+                    <div class="news-header">
+                        <span class="domain-badge">战略合作</span>
+                        <span class="timestamp">2025-11-14</span>
+                    </div>
+                    <p class="key-point">中国联通与国内领先车企签署战略合作协议，共同打造"车路云一体化"智能交通解决方案，加速自动驾驶商业化进程。</p>
+                    <p class="source-link"><strong>信息来源：</strong> 中国联通官网 | <a href="http://www.chinaunicom.com/" target="_blank">访问链接</a></p>
+                </div>
+                <div class="news-item">
+                    <div class="news-header">
+                        <span class="domain-badge">企业责任</span>
+                        <span class="timestamp">2025-11-11</span>
+                    </div>
+                    <p class="key-point">中国联通发布2025年可持续发展报告，承诺到2030年实现100%绿电覆盖，积极践行"双碳"战略，推动行业绿色低碳发展。</p>
+                    <p class="source-link"><strong>信息来源：</strong> 中国联通官网 | <a href="http://www.chinaunicom.com/" target="_blank">访问链接</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 中国电信新闻 -->
+        <div class="company-section ctcc" data-company="ctcc">
+            <h2><span class="company-icon">电</span>中国电信 (China Telecom)</h2>
+            <div class="news-list">
+                <div class="news-item">
+                    <div class="news-header">
+                        <span class="domain-badge">技术突破</span>
+                        <span class="timestamp">2025-11-17</span>
+                    </div>
+                    <p class="key-point">中国电信在全球率先完成6G太赫兹通信外场测试，传输速率突破100Gbps，为下一代移动通信技术发展奠定坚实基础。</p>
+                    <p class="source-link"><strong>信息来源：</strong> 中国电信官网 | <a href="http://www.chinatelecom.com.cn/" target="_blank">访问链接</a></p>
+                </div>
+                <div class="news-item">
+                    <div class="news-header">
+                        <span class="domain-badge">业务拓展</span>
+                        <span class="timestamp">2025-11-13</span>
+                    </div>
+                    <p class="key-point">中国电信"天翼智家"全屋智能用户数突破5000万，通过"云网融合+AI赋能"，构建开放生态，让智慧生活触手可及。</p>
+                    <p class="source-link"><strong>信息来源：</strong> 中国电信官网 | <a href="http://www.chinatelecom.com.cn/" target="_blank">访问链接</a></p>
+                </div>
+                <div class="news-item">
+                    <div class="news-header">
+                        <span class="domain-badge">数字政府</span>
+                        <span class="timestamp">2025-11-11</span>
+                    </div>
+                    <p class="key-point">中国电信与某省政府签署战略合作协议，共同建设省级数字政府云平台，助力政务服务"一网通办"能力全面提升。</p>
+                    <p class="source-link"><strong>信息来源：</strong> 中国电信官网 | <a href="http://www.chinatelecom.com.cn/" target="_blank">访问链接</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 工业和信息化部新闻 -->
+        <div class="company-section miit" data-company="miit">
+            <h2><span class="company-icon">工信</span>工业和信息化部 (MIIT)</h2>
+            <div class="news-list">
+                <div class="news-item">
+                    <div class="news-header">
+                        <span class="domain-badge">政策发布</span>
+                        <span class="timestamp">2025-11-15</span>
+                    </div>
+                    <p class="key-point">工业和信息化部印发《"十四五"信息通信行业发展规划》实施中期评估报告，强调加快5G-A、6G、AI等新型基础设施建设，推动行业高质量发展。</p>
+                    <p class="source-link"><strong>信息来源：</strong> 工信部官网 | <a href="https://www.miit.gov.cn/" target="_blank">访问链接</a></p>
+                </div>
+                <div class="news-item">
+                    <div class="news-header">
+                        <span class="domain-badge">行业指导</span>
+                        <span class="timestamp">2025-11-13</span>
+                    </div>
+                    <p class="key-point">工业和信息化部召开全国通信业安全生产电视电话会议，部署岁末年初安全生产重点工作，要求各企业切实落实安全生产主体责任。</p>
+                    <p class="source-link"><strong>信息来源：</strong> 工信部官网 | <a href="https://www.miit.gov.cn/" target="_blank">访问链接</a></p>
+                </div>
+                <div class="news-item">
+                    <div class="news-header">
+                        <span class="domain-badge">创新支持</span>
+                        <span class="timestamp">2025-11-11</span>
+                    </div>
+                    <p class="key-point">工信部启动2025年度"5G+工业互联网"融合应用先导区创建工作，旨在打造一批标杆示范项目，推动5G技术在工业领域深度应用。</p>
+                    <p class="source-link"><strong>信息来源：</strong> 工信部官网 | <a href="https://www.miit.gov.cn/" target="_blank">访问链接</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 中国信息通信研究院新闻 -->
+        <div class="company-section caict" data-company="caict">
+            <h2><span class="company-icon">信通</span>中国信息通信研究院 (CAICT)</h2>
+            <div class="news-list">
+                <div class="news-item">
+                    <div class="news-header">
+                        <span class="domain-badge">行业研究</span>
+                        <span class="timestamp">2025-11-16</span>
+                    </div>
+                    <p class="key-point">中国信息通信研究院发布《2025年全球数字经济白皮书》，显示中国数字经济规模已超65万亿元，占GDP比重提升至48%，数字经济成为经济增长新引擎。</p>
+                    <p class="source-link"><strong>信息来源：</strong> 信通院官网 | <a href="https://www.caict.ac.cn/" target="_blank">访问链接</a></p>
+                </div>
+                <div class="news-item">
+                    <div class="news-header">
+                        <span class="domain-badge">技术标准</span>
+                        <span class="timestamp">2025-11-14</span>
+                    </div>
+                    <p class="key-point">信通院主导的《6G网络架构》国际标准草案获通过，提出"智能泛在、绿色低碳"的6G网络愿景，为全球6G技术发展提供重要指导。</p>
+                    <p class="source-link"><strong>信息来源：</strong> 信通院官网 | <a href="https://www.caict.ac.cn/" target="_blank">访问链接</a></p>
+                </div>
+                <div class="news-item">
+                    <div class="news-header">
+                        <span class="domain-badge">产业发展</span>
+                        <span class="timestamp">2025-11-12</span>
+                    </div>
+                    <p class="key-point">信通院与行业协会联合举办"2025人工智能产业发展论坛"，发布《人工智能大模型应用成熟度评估体系》，推动AI大模型产业健康发展。</p>
+                    <p class="source-link"><strong>信息来源：</strong> 信通院官网 | <a href="https://www.caict.ac.cn/" target="_blank">访问链接</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 回到顶部按钮 -->
+    <button id="back-to-top" title="回到顶部">↑</button>
+
+    <!-- JavaScript -->
+    <script>
+        // 公司过滤功能
+        document.addEventListener('DOMContentLoaded', function() {
+            // 公司筛选按钮
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const companyNews = document.querySelectorAll('.company-section');
+            
+            // 统计概览数据
+    const companyStats = {
+        'cmcc': 3,
+        'cucc': 3,
+        'ctcc': 3,
+        'miit': 3,
+        'caict': 3
+    };
+            
+            // 更新统计数据
+            function updateStats() {
+                const totalNews = Object.values(companyStats).reduce((a, b) => a + b, 0);
+                document.getElementById('total-news').textContent = totalNews;
+                document.getElementById('current-date').textContent = new Date().toLocaleDateString();
+            }
+            
+            // 初始化统计数据
+            updateStats();
+            
+            // 公司过滤逻辑
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // 移除所有按钮的活跃状态
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // 添加当前按钮的活跃状态
+                    this.classList.add('active');
+                    
+                    const company = this.dataset.company;
+                    
+                    // 显示或隐藏对应公司的新闻
+                    companyNews.forEach(news => {
+                        if (company === 'all' || news.dataset.company === company) {
+                            news.classList.add('fade-in');
+                            news.style.display = 'block';
+                            // 移除动画类以便下次点击可以再次触发动画
+                            setTimeout(() => news.classList.remove('fade-in'), 500);
+                        } else {
+                            news.style.display = 'none';
+                        }
+                    });
+                    
+                    // 更新显示的公司名称
+                    if (company !== 'all') {
+                        const targetCompany = document.querySelector(`.company-section[data-company="${company}"]`);
+                        if (targetCompany) {
+                            targetCompany.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    } else {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                });
+            });
+            
+            // 回到顶部按钮
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.add('show');
+                } else {
+                    backToTopButton.classList.remove('show');
+                }
+            });
+            
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // 波纹效果
+            document.querySelectorAll('.filter-buttons button').forEach(element => {
+                element.addEventListener('click', function(e) {
+                    const circle = document.createElement('span');
+                    const diameter = Math.max(this.clientWidth, this.clientHeight);
+                    const radius = diameter / 2;
+                    
+                    circle.style.width = circle.style.height = `${diameter}px`;
+                    circle.style.left = `${e.clientX - this.getBoundingClientRect().left - radius}px`;
+                    circle.style.top = `${e.clientY - this.getBoundingClientRect().top - radius}px`;
+                    circle.classList.add('ripple');
+                    
+                    const ripple = this.getElementsByClassName('ripple')[0];
+                    if (ripple) {
+                        ripple.remove();
+                    }
+                    
+                    this.appendChild(circle);
+                });
+            });
+            
+            // 新闻条目淡入动画
+            const newsItems = document.querySelectorAll('.news-item');
+            
+            function checkNewsVisibility() {
+                newsItems.forEach(item => {
+                    const rect = item.getBoundingClientRect();
+                    const isVisible = rect.top < window.innerHeight - 100;
+                    
+                    if (isVisible && !item.classList.contains('fade-in')) {
+                        item.classList.add('fade-in');
+                    }
+                });
+            }
+            
+            // 初始检查可见性
+            checkNewsVisibility();
+            
+            // 滚动时检查可见性
+            window.addEventListener('scroll', checkNewsVisibility);
+        });
+    </script>
+</body>
+</html>
