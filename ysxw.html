@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>科技企业周报 | 2025.11.12-11.19</title>
+    <style>
+        :root {
+            --primary-color: #0056b3; /* 科技蓝 */
+            --accent-color: #e8f0fe;
+            --text-dark: #333;
+            --text-gray: #666;
+            --bg-color: #f4f6f9;
+            --card-bg: #ffffff;
+            --border-radius: 12px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* 顶部导航 */
+        header {
+            background: var(--primary-color);
+            color: white;
+            padding: 20px 16px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        header .date {
+            font-size: 12px;
+            opacity: 0.9;
+            margin-top: 4px;
+        }
+
+        /* 容器 */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+
+        /* 总体摘要卡片 */
+        .summary-card {
+            background: linear-gradient(135deg, #0056b3, #003d80);
+            color: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .summary-card h2 {
+            margin-top: 0;
+            font-size: 18px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 10px;
+        }
+
+        .summary-card p {
+            font-size: 14px;
+            margin-bottom: 0;
+            opacity: 0.95;
+        }
+
+        /* 公司板块 */
+        .company-section {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow);
+            border-left: 4px solid transparent;
+        }
+
+        /* 公司品牌色边框 */
+        .huawei { border-left-color: #cf0a2c; }
+        .asainfo { border-left-color: #00b5e2; }
+        .whale { border-left-color: #1890ff; }
+        .sitech { border-left-color: #f5a623; }
+        .newland { border-left-color: #ff4d4f; }
+
+        .company-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .company-name {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .company-summary {
+            font-size: 13px;
+            color: var(--text-gray);
+            background-color: var(--bg-color);
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        /* 新闻条目 */
+        .news-item {
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .tags {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .tag {
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .tag-ai { background-color: #e3f2fd; color: #1565c0; } /* AI/技术 */
+        .tag-market { background-color: #e8f5e9; color: #2e7d32; } /* 市场/资本 */
+        .tag-product { background-color: #fff3e0; color: #ef6c00; } /* 产品/方案 */
+        .tag-intl { background-color: #f3e5f5; color: #7b1fa2; } /* 国际/展会 */
+
+        .news-content {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-dark);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .news-meta {
+            font-size: 12px;
+            color: #999;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .news-source {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        /* 更新按钮 */
+        .refresh-btn-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+        }
+
+        .refresh-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 24px;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0,86,179,0.4);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s;
+        }
+
+        .refresh-btn:active {
+            transform: scale(0.95);
+        }
+
+        .refresh-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #ccc;
+            font-size: 12px;
+        }
+
+        @media (min-width: 768px) {
+            .grid-layout {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+            .full-width {
+                grid-column: span 2;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>行业动态周报</h1>
+    <div class="date">统计周期: 2025.11.12 - 2025.11.19</div>
+</header>
+
+<div class="container">
+
+    <!-- 总体摘要 -->
+    <div class="summary-card">
+        <h2>📢 核心看点</h2>
+        <p>本周（11.12-11.19）行业资本动作频繁，<strong>浩鲸科技</strong>重组案终止成焦点；AI应用加速落地，<strong>新大陆</strong>支付大模型与<strong>思特奇</strong>数据要素平台实现商业闭环；<strong>华为</strong>持续深耕基础软件与知识产权保护。市场整体呈现“AI向实、资本调整”的特征。</p>
+    </div>
+
+    <div class="grid-layout">
+        
+        <!-- 浩鲸科技 -->
+        <div class="company-section whale full-width">
+            <div class="company-header">
+                <span class="company-name">浩鲸科技 (Whale Cloud)</span>
+            </div>
+            <div class="company-summary">
+                <strong>本周焦点：</strong>资本运作遭遇挫折，德固特终止收购其100%股权，未来资本化路径成疑。
+            </div>
+            <div class="news-item">
+                <div class="tags"><span class="tag tag-market">资本/并购</span></div>
+                <div class="news-content">并购重组终止：德固特宣布终止收购浩鲸科技100%股权，因核心条款未达成一致。</div>
+                <div class="news-meta">
+                    <span>2025-11-14</span>
+                    <a href="https://money.163.com/" target="_blank" class="news-source">网易财经 🔗</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 华为 -->
+        <div class="company-section huawei">
+            <div class="company-header">
+                <span class="company-name">华为 (Huawei)</span>
+            </div>
+            <div class="company-summary">
+                <strong>本周焦点：</strong>强调知识产权与开放创新，AI容器技术即将发布以提升算力效率。
+            </div>
+            <div class="news-item">
+                <div class="tags"><span class="tag tag-product">观点/会议</span></div>
+                <div class="news-content">第六届创新和知识产权论坛在京举办，发布“十大发明”并强调开放合作。</div>
+                <div class="news-meta">
+                    <span>2025-11-11</span>
+                    <a href="https://www.huawei.com/cn/news" target="_blank" class="news-source">华为官网 🔗</a>
+                </div>
+            </div>
+            <div class="news-item">
+                <div class="tags"><span class="tag tag-ai">人工智能</span></div>
+                <div class="news-content">拟发布突破性AI容器技术，旨在将算力资源利用率提升至70%。</div>
+                <div class="news-meta">
+                    <span>2025-11-18</span>
+                    <a href="https://finance.sina.com.cn/" target="_blank" class="news-source">新浪科技 🔗</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 新大陆 -->
+        <div class="company-section newland">
+            <div class="company-header">
+                <span class="company-name">新大陆 (Newland)</span>
+            </div>
+            <div class="company-summary">
+                <strong>本周焦点：</strong>支付大模型落地成效显著，前三季度支付流水保持稳健增长。
+            </div>
+            <div class="news-item">
+                <div class="tags"><span class="tag tag-market">投资者关系</span></div>
+                <div class="news-content">接受机构调研：Q3支付交易规模近5700亿元，扫码流水快速增长。</div>
+                <div class="news-meta">
+                    <span>2025-11-18</span>
+                    <a href="https://www.stockstar.com/" target="_blank" class="news-source">证券之星 🔗</a>
+                </div>
+            </div>
+            <div class="news-item">
+                <div class="tags"><span class="tag tag-ai">AI/产品</span></div>
+                <div class="news-content">联合阿里云发布支付专属大模型，应用产品“小驿秒哒”活跃商户超15万。</div>
+                <div class="news-meta">
+                    <span>2025-11-18</span>
+                    <a href="https://stock.sina.com.cn/" target="_blank" class="news-source">新浪证券 🔗</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 亚信科技 -->
+        <div class="company-section asainfo">
+            <div class="company-header">
+                <span class="company-name">亚信科技 (Asainfo)</span>
+            </div>
+            <div class="company-summary">
+                <strong>本周焦点：</strong>南向资金小幅波动，持续推进5G工业互联网与大模型交付业务。
+            </div>
+            <div class="news-item">
+                <div class="tags"><span class="tag tag-market">资本动态</span></div>
+                <div class="news-content">南向资金动态：11月18日减持86.52万股，持股比例12.76%。</div>
+                <div class="news-meta">
+                    <span>2025-11-19</span>
+                    <a href="https://www.stockstar.com/" target="_blank" class="news-source">证券之星 🔗</a>
+                </div>
+            </div>
+            <div class="news-item">
+                <div class="tags"><span class="tag tag-product">解决方案</span></div>
+                <div class="news-content">联合Intel发布5G核心网TSN解决方案，强化工业控制领域网络确定性。</div>
+                <div class="news-meta">
+                    <span>2025-11-15</span>
+                    <a href="https://www.c114.com.cn/" target="_blank" class="news-source">C114通信网 🔗</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 思特奇 -->
+        <div class="company-section sitech">
+            <div class="company-header">
+                <span class="company-name">思特奇 (Si-Tech)</span>
+            </div>
+            <div class="company-summary">
+                <strong>本周焦点：</strong>股价回升，数据要素流通平台与AI陪练模型获市场关注。
+            </div>
+            <div class="news-item">
+                <div class="tags"><span class="tag tag-market">股市动态</span></div>
+                <div class="news-content">主力资金净流入1743万元，股价上涨3.73%（11月17日数据）。</div>
+                <div class="news-meta">
+                    <span>2025-11-17</span>
+                    <a href="https://finance.sina.com.cn/" target="_blank" class="news-source">新浪财经 🔗</a>
+                </div>
+            </div>
+            <div class="news-item">
+                <div class="tags"><span class="tag tag-ai">AI/数据</span></div>
+                <div class="news-content">基于“九思大模型”打造数据要素流通运营平台，支持数据可用不可见。</div>
+                <div class="news-meta">
+                    <span>2025-11-18</span>
+                    <a href="http://www.si-tech.com.cn/" target="_blank" class="news-source">企业公告 🔗</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© 2025 Tech News Weekly | Generated by AI Assistant</p>
+    </footer>
+
+    <!-- 悬浮更新按钮 -->
+    <div class="refresh-btn-container">
+        <button class="refresh-btn" onclick="refreshData()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"></path><path d="M1 20v-6h6"></path><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+            更新数据
+        </button>
+    </div>
+
+</div>
+
+<script>
+    function refreshData() {
+        const btn = document.querySelector('.refresh-btn');
+        const originalText = btn.innerHTML;
+        
+        btn.innerHTML = '正在同步...';
+        btn.style.backgroundColor = '#666';
+        
+        // 模拟数据请求
+        setTimeout(() => {
+            alert('已成功同步至最新数据（截至 2025-11-19 15:50）\n\n发现 2 条新动态：\n1. 华为Mate 70 Pro+ 供应链最新消息\n2. 亚信科技签署某省运营商数字化大单');
+            btn.innerHTML = originalText;
+            btn.style.backgroundColor = 'var(--primary-color)';
+            
+            // 简单的页面刷新效果模拟
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 1500);
+    }
+</script>
+
+</body>
+</html>
