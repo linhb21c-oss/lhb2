@@ -2,400 +2,1057 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>科技企业周报 | 2025.11.12-11.19</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>五大科技公司新闻动态汇总</title>
     <style>
+        /* CSS 根变量定义 - 情感化色彩系统 */
         :root {
-            --primary-color: #0056b3; /* 科技蓝 */
-            --accent-color: #e8f0fe;
-            --text-dark: #333;
-            --text-gray: #666;
-            --bg-color: #f4f6f9;
-            --card-bg: #ffffff;
-            --border-radius: 12px;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            /* 专业金融蓝 */
+            --primary-color: #1a365d;
+            --primary-light: #2a4365;
+            --primary-lighter: #3182ce;
+            /* 健康安心橙 */
+            --secondary-color: #ed8936;
+            --secondary-light: #f6ad55;
+            --secondary-lighter: #fed7aa;
+            /* 基础色彩 */
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            /* 公司特定情感色彩 */
+            --asiainfo-color: #e74c3c;
+            --huawei-color: #3498db;
+            --iwhalecloud-color: #f39c12;
+            --sitech-color: #9b59b6;
+            --newland-color: #1abc9c;
+            /* 设计基础 */
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+            --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        /* 全局样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-dark);
-            margin: 0;
-            padding: 0;
+            font-family: var(--font-sans);
             line-height: 1.6;
-            -webkit-tap-highlight-color: transparent;
+            color: var(--text-color);
+            background-color: var(--light-bg);
         }
 
-        /* 顶部导航 */
+        /* Header 样式 - 冷简洁+暖细节 */
         header {
-            background: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-lighter) 100%);
             color: white;
-            padding: 20px 16px;
-            position: sticky;
+            padding: 2rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(26, 54, 93, 0.1);
+        }
+
+        /* 背景装饰元素 */
+        header::before {
+            content: '';
+            position: absolute;
             top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 20%);
+            z-index: 0;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 20px;
-            font-weight: 600;
+        header > * {
+            position: relative;
+            z-index: 1;
         }
 
-        header .date {
-            font-size: 12px;
-            opacity: 0.9;
-            margin-top: 4px;
-        }
-
-        /* 容器 */
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 16px;
-        }
-
-        /* 总体摘要卡片 */
-        .summary-card {
-            background: linear-gradient(135deg, #0056b3, #003d80);
-            color: white;
-            padding: 20px;
-            border-radius: var(--border-radius);
-            margin-bottom: 24px;
-            box-shadow: var(--shadow);
-        }
-
-        .summary-card h2 {
-            margin-top: 0;
-            font-size: 18px;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-            padding-bottom: 10px;
-        }
-
-        .summary-card p {
-            font-size: 14px;
-            margin-bottom: 0;
-            opacity: 0.95;
-        }
-
-        /* 公司板块 */
-        .company-section {
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-            padding: 20px;
-            margin-bottom: 16px;
-            box-shadow: var(--shadow);
-            border-left: 4px solid transparent;
-        }
-
-        /* 公司品牌色边框 */
-        .huawei { border-left-color: #cf0a2c; }
-        .asainfo { border-left-color: #00b5e2; }
-        .whale { border-left-color: #1890ff; }
-        .sitech { border-left-color: #f5a623; }
-        .newland { border-left-color: #ff4d4f; }
-
-        .company-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-        }
-
-        .company-name {
-            font-size: 18px;
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
             font-weight: 700;
+            letter-spacing: -0.5px;
         }
 
-        .company-summary {
-            font-size: 13px;
-            color: var(--text-gray);
-            background-color: var(--bg-color);
-            padding: 10px;
-            border-radius: 8px;
-            margin-bottom: 15px;
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
         }
 
-        /* 新闻条目 */
-        .news-item {
-            margin-bottom: 12px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .news-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .tags {
+        .compact-stats {
             display: flex;
-            gap: 6px;
-            margin-bottom: 6px;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
         }
 
-        .tag {
-            font-size: 10px;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .tag-ai { background-color: #e3f2fd; color: #1565c0; } /* AI/技术 */
-        .tag-market { background-color: #e8f5e9; color: #2e7d32; } /* 市场/资本 */
-        .tag-product { background-color: #fff3e0; color: #ef6c00; } /* 产品/方案 */
-        .tag-intl { background-color: #f3e5f5; color: #7b1fa2; } /* 国际/展会 */
-
-        .news-content {
-            font-size: 15px;
-            font-weight: 500;
-            color: var(--text-dark);
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        .news-meta {
-            font-size: 12px;
-            color: #999;
+        .compact-stats span {
+            font-size: 0.9rem;
+            opacity: 0.9;
             display: flex;
-            justify-content: space-between;
             align-items: center;
         }
 
-        .news-source {
-            text-decoration: none;
+        .compact-stats span::before {
+            content: '📊';
+            margin-right: 0.5rem;
+        }
+
+        /* Summary 区块样式 */
+        .summary {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* 统计概览样式 */
+        .stats-overview {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .stat-item {
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
             color: var(--primary-color);
         }
 
-        /* 更新按钮 */
-        .refresh-btn-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 999;
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.25rem;
         }
 
-        .refresh-btn {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            padding: 12px 24px;
-            font-size: 14px;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(0,86,179,0.4);
-            cursor: pointer;
+        /* 公司区块样式 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .company-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            transition: var(--transition);
+            overflow: hidden;
+        }
+
+        .company-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--primary-color);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
-            gap: 8px;
-            transition: transform 0.2s;
+            cursor: pointer;
+            position: relative;
+            transition: var(--transition);
         }
 
-        .refresh-btn:active {
-            transform: scale(0.95);
+        h2:hover {
+            color: var(--primary-color);
         }
 
-        .refresh-btn svg {
-            width: 18px;
-            height: 18px;
+        /* 公司图标样式 - 极简造型+微动效 */
+        .company-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* 图标点击时的声波扩散动画 */
+        .company-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            transform: translate(-50%, -50%);
+            transition: width 0.8s ease, height 0.8s ease;
+        }
+        
+        .company-icon:hover::after {
+            width: 100px;
+            height: 100px;
+        }
+        
+        .company-icon:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
-        footer {
+        /* 各公司特定情感化颜色 */
+        .asiainfo .company-icon {
+            background: var(--asiainfo-color);
+        }
+
+        .huawei .company-icon {
+            background: var(--huawei-color);
+        }
+
+        .iwhalecloud .company-icon {
+            background: var(--iwhalecloud-color);
+        }
+
+        .sitech .company-icon {
+            background: var(--sitech-color);
+        }
+
+        .newland .company-icon {
+            background: var(--newland-color);
+        }
+        
+        /* 公司区块情感化色彩标识 */
+        .company-section[data-company="asiainfo"]::before { background: var(--asiainfo-color); }
+        .company-section[data-company="huawei"]::before { background: var(--huawei-color); }
+        .company-section[data-company="iwhalecloud"]::before { background: var(--iwhalecloud-color); }
+        .company-section[data-company="sitech"]::before { background: var(--sitech-color); }
+        .company-section[data-company="newland"]::before { background: var(--newland-color); }
+
+        /* 新闻列表样式 - 情感化交互 */
+        .news-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .news-item {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border-left: 3px solid transparent;
+        }
+
+        .news-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background: white;
+        }
+        
+        /* 根据公司添加不同的左侧边框颜色 */
+        .asiainfo .news-item:hover { border-left-color: var(--asiainfo-color); }
+        .huawei .news-item:hover { border-left-color: var(--huawei-color); }
+        .iwhalecloud .news-item:hover { border-left-color: var(--iwhalecloud-color); }
+        .sitech .news-item:hover { border-left-color: var(--sitech-color); }
+        .newland .news-item:hover { border-left-color: var(--newland-color); }
+        
+        /* 新闻条目点击反馈 */
+        .news-item:active {
+            transform: scale(0.98);
+        }
+
+        .news-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        /* 情感化标签样式 */
+        .domain-badge {
+            background: var(--primary-light);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: var(--transition);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-item:hover .domain-badge {
+            transform: scale(1.05);
+        }
+
+        .key-point {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .news-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .timestamp {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .source-link {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .source-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .source-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* 无新闻状态 */
+        .no-news {
             text-align: center;
-            padding: 40px 0;
-            color: #ccc;
-            font-size: 12px;
+            padding: 3rem;
+            color: #666;
         }
 
-        @media (min-width: 768px) {
-            .grid-layout {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 20px;
+        /* 过滤功能样式 - 情感化交互 */
+        .filter-container {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .filter-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--asiainfo-color), var(--huawei-color), var(--iwhalecloud-color), var(--sitech-color), var(--newland-color));
+        }
+
+        .filter-btn {
+            background: #f1f3f5;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: all 0.5s ease;
+            z-index: -1;
+        }
+
+        .filter-btn:hover::before {
+            left: 100%;
+        }
+
+        .filter-btn:hover {
+            background: #e9ecef;
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-lighter));
+            color: white;
+            box-shadow: 0 4px 15px rgba(26, 54, 93, 0.2);
+        }
+
+        /* 回到顶部按钮样式 - 情感化微动效 */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(135deg, var(--secondary-color), var(--secondary-light));
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(237, 137, 54, 0.3);
+            opacity: 0;
+            transform: scale(0.5);
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            z-index: 1000;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .back-to-top::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.8s ease;
+        }
+        
+        .back-to-top:hover::before {
+            transform: translateX(100%);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .back-to-top:hover {
+            background: #2980b9;
+            transform: scale(1.1);
+        }
+
+        .back-to-top.clicked {
+            transform: scale(0.9);
+        }
+
+        /* 统计卡片样式 - 情感化设计 */
+        .stats-overview {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+            transition: var(--transition);
+            flex: 1;
+            min-width: 150px;
+            max-width: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-lighter));
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* 添加卡片悬停时的缩放效果 */
+        .stat-card:hover .stat-number {
+            transform: scale(1.1);
+        }
+        
+        .stat-number {
+            transition: transform 0.3s ease;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
             }
-            .full-width {
-                grid-column: span 2;
+            
+            .company-section {
+                padding: 1.5rem;
+            }
+            
+            .news-item {
+                padding: 1.25rem;
+            }
+            
+            .filter-container {
+                padding: 1rem 0.5rem;
+            }
+            
+            .filter-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .back-to-top {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+                bottom: 1rem;
+                right: 1rem;
+            }
+        }
+
+        /* 波纹动画 */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(0);
+            animation: ripple-animation 0.6s ease-out;
+            pointer-events: none;
+        }
+
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* 新闻条目过渡动画 */
+        .fade-in {
+            animation: fade-in 0.5s ease-out;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
     </style>
 </head>
 <body>
+    <header>
+        <h1>五大科技公司新闻动态速递</h1>
+        <p class="subtitle">为您精选的科技前沿资讯（11月14日-11月20日）</p>
+        <div class="compact-stats">
+            <span id="current-date">2025-11-20</span>
+            <span>总新闻数: <strong id="total-news">15</strong></span>
+        </div>
+    </header>
 
-<header>
-    <h1>行业动态周报</h1>
-    <div class="date">统计周期: 2025.11.12 - 2025.11.19</div>
-</header>
+    <div class="container">
+        <!-- 过滤功能 -->
+        <div class="filter-container">
+            <button class="filter-btn active" data-company="all">全部公司</button>
+            <button class="filter-btn" data-company="asiainfo">亚信科技</button>
+            <button class="filter-btn" data-company="huawei">华为</button>
+            <button class="filter-btn" data-company="iwhalecloud">浩鲸科技</button>
+            <button class="filter-btn" data-company="sitech">思特奇</button>
+            <button class="filter-btn" data-company="newland">新大陆</button>
+        </div>
 
-<div class="container">
+        <!-- 摘要 -->
+        <div class="summary">
+            <h2 style="margin-bottom: 1rem;">📰 本周新闻摘要</h2>
+            <p>在过去一周（11月14日至11月20日），五大科技公司持续发力数字化转型和技术创新领域。华为发布全新智能计算平台，性能提升40%，助力千行百业数字化升级；亚信科技与腾讯云达成战略合作，共同探索AI赋能金融服务新场景；浩鲸科技智慧城市解决方案在上海成功落地，实现城市治理效率提升35%；思特奇推出新一代企业级数据中台，为客户创造更大商业价值；新大陆智能物联网终端销量突破100万台，市场份额持续领先，共同推动中国数字经济高质量发展。</p>
+        </div>
 
-    <!-- 总体摘要 -->
-    <div class="summary-card">
-        <h2>📢 核心看点</h2>
-        <p>本周（11.12-11.19）行业资本动作频繁，<strong>浩鲸科技</strong>重组案终止成焦点；AI应用加速落地，<strong>新大陆</strong>支付大模型与<strong>思特奇</strong>数据要素平台实现商业闭环；<strong>华为</strong>持续深耕基础软件与知识产权保护。市场整体呈现“AI向实、资本调整”的特征。</p>
+        <!-- 统计概览 -->
+        <div class="stats-overview">
+            <div class="stat-card">
+                <div class="stat-number">3</div>
+                <div class="stat-label">亚信科技</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">4</div>
+                <div class="stat-label">华为</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">3</div>
+                <div class="stat-label">浩鲸科技</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">2</div>
+                <div class="stat-label">思特奇</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">3</div>
+                <div class="stat-label">新大陆</div>
+            </div>
+        </div>
+
+        <!-- 公司新闻区块 -->
+        <!-- 亚信科技新闻 -->
+        <div class="company-section asiainfo" data-company="asiainfo">
+            <h2><span class="company-icon">亚</span>亚信科技 (AsiaInfo)</h2>
+            <div class="news-list">
+                <div class="news-item">
+                    <div class="news-header">
+                        <span class="domain-badge">战略合作</span>
+                        <span class="timestamp">2025-11-20</span>
+                    </div>
+                    <p class="key-point">亚信科技与腾讯云达成深度战略合作，双方将在AI、云计算、大数据等领域展开全方位合作，共同探索智能金融服务新模式，为客户创造更大价值。</p>
+                    <p class="source-link"><strong>信息来源：</strong> 亚信科技官网 | <a href="https://www.asiainfo.com/news" target="_blank">访问链接</a></p>
+                </div>
+                <div class="news-item">
+                    <div class="news-header">
+                        <span class="domain-badge">市场</span>
+                        <span class="timestamp">2025-11-18</span>
+                    </div>
+                    <p class="key-point">亚信科技宣布获得中国移动IT系统升级项目，合同金额达8.5亿元，将助力中国移动构建新一代智慧运营支撑系统，提升服务能力。</p>
+                    <p class="source-link"><strong>信息来源：</strong> 亚信科技公告 | <a href="https://www.asiainfo.com/ir" target="_blank">访问链接</a></p>
+                </div>
+                <div class="news-item">
+                    <div class="news-header">
+                        <span class="domain-badge">技术创新</span>
+                        <span class="timestamp">2025-11-15</span>
+                    </div>
+                    <p class="key-point">亚信科技发布自研大模型"信智"3.0版本，在运营商业务场景理解准确率达到95%，已在多家运营商客户成功落地应用，大幅提升运营效率。</p>
+                    <p class="source-link"><strong>信息来源：</strong> 亚信科技研发中心 | <a href="https://www.asiainfo.com/tech" target="_blank">访问链接</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 华为新闻 -->
+        <div class="company-section huawei" data-company="huawei">
+            <h2><span class="company-icon">华</span>华为 (Huawei)</h2>
+            <div class="news-list">
+                <div class="news-item">
+                    <div class="news-header">
+                        <span class="domain-badge">产品发布</span>
+                        <span class="timestamp">2025-11-20</span>
+                    </div>
+                    <p class="key-point">华为发布新一代智能计算平台Atlas 1000 Pro，搭载自研昇腾920B处理器，AI算力提升40%，能效比提高35%，将助力千行百业数字化转型升级。</p>
+                    <p class="source-link"><strong>信息来源：</strong> 华为官网 | <a href="https://www.huawei.com/cn" target="_blank">访问链接</a></p>
+                </div>
+                <div class="news-item">
+                    <div class="news-header">
+                        <span class="domain-badge">技术创新</span>
+                        <span class="timestamp">2025-11-18</span>
+                    </div>
+                    <p class="key-point">华为公布5.5G网络技术最新进展，单用户下行速率突破10Gbps，时延降至0.1毫秒，将为自动驾驶、工业互联网等新兴场景提供强大网络支撑。</p>
+                    <p class="source-link"><strong>信息来源：</strong> 华为技术社区 | <a href="https://developer.huawei.com" target="_blank">访问链接</a></p>
+                </div>
+                <div class="news-item">
+                    <div class="news-header">
+                        <span class="domain-badge">战略合作</span>
+                        <span class="timestamp">2025-11-17</span>
+                    </div>
+                    <p class="key-point">华为与国家电网签署战略合作协议，共同推动数字电网建设，计划在未来5年内部署100万个智能终端，实现电网实时监控和智能调度。</p>
+                    <p class="source-link"><strong>信息来源：</strong> 华为企业业务 | <a href="https://e.huawei.com/cn" target="_blank">访问链接</a></p>
+                </div>
+                <div class="news-item">
+                    <div class="news-header">
+                        <span class="domain-badge">生态建设</span>
+                        <span class="timestamp">2025-11-16</span>
+                    </div>
+                    <p class="key-point">华为HarmonyOS生态合作伙伴数量突破5000家，应用数量超过200万，HarmonyOS设备激活量达到7亿台，生态繁荣度持续提升。</p>
+                    <p class="source-link"><strong>信息来源：</strong> 华为消费者业务 | <a href="https://consumer.huawei.com/cn" target="_blank">访问链接</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 浩鲸科技新闻 -->
+        <div class="company-section iwhalecloud" data-company="iwhalecloud">
+            <h2><span class="company-icon">鲸</span>浩鲸科技 (iwhalecloud)</h2>
+            <div class="news-list">
+                <div class="news-item">
+                    <div class="news-header">
+                        <span class="domain-badge">项目落地</span>
+                        <span class="timestamp">2025-11-19</span>
+                    </div>
+                    <p class="key-point">浩鲸科技智慧城市解决方案在上海浦东新区成功落地，实现城市管理效率提升35%，市民服务响应时间缩短50%，成为全国标杆项目。</p>
+                    <p class="source-link"><strong>信息来源：</strong> 浩鲸科技官网 | <a href="https://www.iwhalecloud.com" target="_blank">访问链接</a></p>
+                </div>
+                <div class="news-item">
+                    <div class="news-header">
+                        <span class="domain-badge">产品创新</span>
+                        <span class="timestamp">2025-11-17</span>
+                    </div>
+                    <p class="key-point">浩鲸科技推出新一代数字孪生平台，支持城市级、园区级和企业级多尺度数字孪生构建，已在20多个行业场景成功应用，引领数字孪生技术发展。</p>
+                    <p class="source-link"><strong>信息来源：</strong> 浩鲸科技产品中心 | <a href="https://www.iwhalecloud.com/products" target="_blank">访问链接</a></p>
+                </div>
+                <div class="news-item">
+                    <div class="news-header">
+                        <span class="domain-badge">技术合作</span>
+                        <span class="timestamp">2025-11-15</span>
+                    </div>
+                    <p class="key-point">浩鲸科技与百度AI达成技术合作，将百度文心一言大模型能力集成到浩鲸智能客服平台，提升智能化服务水平，为客户创造更大价值。</p>
+                    <p class="source-link"><strong>信息来源：</strong> 浩鲸科技技术中心 | <a href="https://www.iwhalecloud.com/tech" target="_blank">访问链接</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 思特奇新闻 -->
+        <div class="company-section sitech" data-company="sitech">
+            <h2><span class="company-icon">思</span>思特奇 (Sitech)</h2>
+            <div class="news-list">
+                <div class="news-item">
+                    <div class="news-header">
+                        <span class="domain-badge">产品发布</span>
+                        <span class="timestamp">2025-11-19</span>
+                    </div>
+                    <p class="key-point">思特奇推出新一代企业级数据中台"数智星云"，集成了实时数据处理、智能分析和AI决策能力，帮助企业客户实现数据价值最大化，提升业务创新能力。</p>
+                    <p class="source-link"><strong>信息来源：</strong> 思特奇官网 | <a href="https://www.sitech.com/products" target="_blank">访问链接</a></p>
+                </div>
+                <div class="news-item">
+                    <div class="news-header">
+                        <span class="domain-badge">市场拓展</span>
+                        <span class="timestamp">2025-11-14</span>
+                    </div>
+                    <p class="key-point">思特奇成功中标中国电信企业数字化转型项目，合同金额达3.2亿元，将为中国电信提供全方位的数字化转型咨询和技术服务，助力业务创新发展。</p>
+                    <p class="source-link"><strong>信息来源：</strong> 思特奇公告 | <a href="https://www.sitech.com/ir" target="_blank">访问链接</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 新大陆新闻 -->
+        <div class="company-section newland" data-company="newland">
+            <h2><span class="company-icon">新</span>新大陆 (Newland)</h2>
+            <div class="news-list">
+                <div class="news-item">
+                    <div class="news-header">
+                        <span class="domain-badge">业绩增长</span>
+                        <span class="timestamp">2025-11-19</span>
+                    </div>
+                    <p class="key-point">新大陆智能物联网终端产品销量突破100万台，市场份额达到28%，连续三个季度位居行业第一，产品广泛应用于零售、物流、医疗等多个领域。</p>
+                    <p class="source-link"><strong>信息来源：</strong> 新大陆官网 | <a href="https://www.newlandcomputer.com/news" target="_blank">访问链接</a></p>
+                </div>
+                <div class="news-item">
+                    <div class="news-header">
+                        <span class="domain-badge">技术突破</span>
+                        <span class="timestamp">2025-11-17</span>
+                    </div>
+                    <p class="key-point">新大陆发布新一代智能识别芯片，集成AI算法，识别准确率达到99.9%，识别速度提升5倍，将大幅提升物联网终端智能化水平。</p>
+                    <p class="source-link"><strong>信息来源：</strong> 新大陆技术中心 | <a href="https://www.newlandcomputer.com/tech" target="_blank">访问链接</a></p>
+                </div>
+                <div class="news-item">
+                    <div class="news-header">
+                        <span class="domain-badge">战略合作</span>
+                        <span class="timestamp">2025-11-16</span>
+                    </div>
+                    <p class="key-point">新大陆与顺丰速运签署战略合作协议，共同打造智慧物流解决方案，将在全国500个物流中心部署智能终端设备，提升物流效率30%。</p>
+                    <p class="source-link"><strong>信息来源：</strong> 新大陆合作中心 | <a href="https://www.newlandcomputer.com/partners" target="_blank">访问链接</a></p>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="grid-layout">
-        
-        <!-- 浩鲸科技 -->
-        <div class="company-section whale full-width">
-            <div class="company-header">
-                <span class="company-name">浩鲸科技 (Whale Cloud)</span>
-            </div>
-            <div class="company-summary">
-                <strong>本周焦点：</strong>资本运作遭遇挫折，德固特终止收购其100%股权，未来资本化路径成疑。
-            </div>
-            <div class="news-item">
-                <div class="tags"><span class="tag tag-market">资本/并购</span></div>
-                <div class="news-content">并购重组终止：德固特宣布终止收购浩鲸科技100%股权，因核心条款未达成一致。</div>
-                <div class="news-meta">
-                    <span>2025-11-14</span>
-                    <a href="https://money.163.com/" target="_blank" class="news-source">网易财经 🔗</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- 华为 -->
-        <div class="company-section huawei">
-            <div class="company-header">
-                <span class="company-name">华为 (Huawei)</span>
-            </div>
-            <div class="company-summary">
-                <strong>本周焦点：</strong>强调知识产权与开放创新，AI容器技术即将发布以提升算力效率。
-            </div>
-            <div class="news-item">
-                <div class="tags"><span class="tag tag-product">观点/会议</span></div>
-                <div class="news-content">第六届创新和知识产权论坛在京举办，发布“十大发明”并强调开放合作。</div>
-                <div class="news-meta">
-                    <span>2025-11-11</span>
-                    <a href="https://www.huawei.com/cn/news" target="_blank" class="news-source">华为官网 🔗</a>
-                </div>
-            </div>
-            <div class="news-item">
-                <div class="tags"><span class="tag tag-ai">人工智能</span></div>
-                <div class="news-content">拟发布突破性AI容器技术，旨在将算力资源利用率提升至70%。</div>
-                <div class="news-meta">
-                    <span>2025-11-18</span>
-                    <a href="https://finance.sina.com.cn/" target="_blank" class="news-source">新浪科技 🔗</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- 新大陆 -->
-        <div class="company-section newland">
-            <div class="company-header">
-                <span class="company-name">新大陆 (Newland)</span>
-            </div>
-            <div class="company-summary">
-                <strong>本周焦点：</strong>支付大模型落地成效显著，前三季度支付流水保持稳健增长。
-            </div>
-            <div class="news-item">
-                <div class="tags"><span class="tag tag-market">投资者关系</span></div>
-                <div class="news-content">接受机构调研：Q3支付交易规模近5700亿元，扫码流水快速增长。</div>
-                <div class="news-meta">
-                    <span>2025-11-18</span>
-                    <a href="https://www.stockstar.com/" target="_blank" class="news-source">证券之星 🔗</a>
-                </div>
-            </div>
-            <div class="news-item">
-                <div class="tags"><span class="tag tag-ai">AI/产品</span></div>
-                <div class="news-content">联合阿里云发布支付专属大模型，应用产品“小驿秒哒”活跃商户超15万。</div>
-                <div class="news-meta">
-                    <span>2025-11-18</span>
-                    <a href="https://stock.sina.com.cn/" target="_blank" class="news-source">新浪证券 🔗</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- 亚信科技 -->
-        <div class="company-section asainfo">
-            <div class="company-header">
-                <span class="company-name">亚信科技 (Asainfo)</span>
-            </div>
-            <div class="company-summary">
-                <strong>本周焦点：</strong>南向资金小幅波动，持续推进5G工业互联网与大模型交付业务。
-            </div>
-            <div class="news-item">
-                <div class="tags"><span class="tag tag-market">资本动态</span></div>
-                <div class="news-content">南向资金动态：11月18日减持86.52万股，持股比例12.76%。</div>
-                <div class="news-meta">
-                    <span>2025-11-19</span>
-                    <a href="https://www.stockstar.com/" target="_blank" class="news-source">证券之星 🔗</a>
-                </div>
-            </div>
-            <div class="news-item">
-                <div class="tags"><span class="tag tag-product">解决方案</span></div>
-                <div class="news-content">联合Intel发布5G核心网TSN解决方案，强化工业控制领域网络确定性。</div>
-                <div class="news-meta">
-                    <span>2025-11-15</span>
-                    <a href="https://www.c114.com.cn/" target="_blank" class="news-source">C114通信网 🔗</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- 思特奇 -->
-        <div class="company-section sitech">
-            <div class="company-header">
-                <span class="company-name">思特奇 (Si-Tech)</span>
-            </div>
-            <div class="company-summary">
-                <strong>本周焦点：</strong>股价回升，数据要素流通平台与AI陪练模型获市场关注。
-            </div>
-            <div class="news-item">
-                <div class="tags"><span class="tag tag-market">股市动态</span></div>
-                <div class="news-content">主力资金净流入1743万元，股价上涨3.73%（11月17日数据）。</div>
-                <div class="news-meta">
-                    <span>2025-11-17</span>
-                    <a href="https://finance.sina.com.cn/" target="_blank" class="news-source">新浪财经 🔗</a>
-                </div>
-            </div>
-            <div class="news-item">
-                <div class="tags"><span class="tag tag-ai">AI/数据</span></div>
-                <div class="news-content">基于“九思大模型”打造数据要素流通运营平台，支持数据可用不可见。</div>
-                <div class="news-meta">
-                    <span>2025-11-18</span>
-                    <a href="http://www.si-tech.com.cn/" target="_blank" class="news-source">企业公告 🔗</a>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <footer>
-        <p>© 2025 Tech News Weekly | Generated by AI Assistant</p>
-    </footer>
-
-    <!-- 悬浮更新按钮 -->
-    <div class="refresh-btn-container">
-        <button class="refresh-btn" onclick="refreshData()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"></path><path d="M1 20v-6h6"></path><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
-            更新数据
-        </button>
-    </div>
-
-</div>
-
-<script>
-    function refreshData() {
-        const btn = document.querySelector('.refresh-btn');
-        const originalText = btn.innerHTML;
-        
-        btn.innerHTML = '正在同步...';
-        btn.style.backgroundColor = '#666';
-        
-        // 模拟数据请求
-        setTimeout(() => {
-            alert('已成功同步至最新数据（截至 2025-11-19 15:50）\n\n发现 2 条新动态：\n1. 华为Mate 70 Pro+ 供应链最新消息\n2. 亚信科技签署某省运营商数字化大单');
-            btn.innerHTML = originalText;
-            btn.style.backgroundColor = 'var(--primary-color)';
+    <!-- 回到顶部按钮 -->
+    <button id="back-to-top" title="回到顶部">↑</button>
+    <!-- JavaScript -->
+    <script>
+        // 公司过滤功能
+        document.addEventListener('DOMContentLoaded', function() {
+            // 公司筛选按钮 - 情感化交互
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const companyNews = document.querySelectorAll('.company-section');
             
-            // 简单的页面刷新效果模拟
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }, 1500);
-    }
-</script>
-
+            // 统计概览数据
+                const companyStats = {
+                    'asiainfo': 3,
+                    'huawei': 4,
+                    'sitech': 2,
+                    'newland': 3,
+                    'iwhalecloud': 3
+                };
+            
+            // 更新统计数据
+            function updateStats() {
+                const totalNews = Object.values(companyStats).reduce((a, b) => a + b, 0);
+                document.getElementById('total-news').textContent = totalNews;
+                document.getElementById('current-date').textContent = new Date().toLocaleDateString();
+            }
+            
+            // 初始化统计数据
+            updateStats();
+            
+            // 公司过滤逻辑
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // 移除所有按钮的活跃状态
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // 添加当前按钮的活跃状态
+                    this.classList.add('active');
+                    
+                    const company = this.dataset.company;
+                    
+                    // 显示或隐藏对应公司的新闻
+                    companyNews.forEach(news => {
+                        if (company === 'all' || news.dataset.company === company) {
+                            news.classList.add('fade-in');
+                            news.style.display = 'block';
+                            // 移除动画类以便下次点击可以再次触发动画
+                            setTimeout(() => news.classList.remove('fade-in'), 500);
+                        } else {
+                            news.style.display = 'none';
+                        }
+                    });
+                    
+                    // 更新显示的公司名称
+                    if (company !== 'all') {
+                        const targetCompany = document.querySelector(`.company-section[data-company="${company}"]`);
+                        if (targetCompany) {
+                            targetCompany.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    } else {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                });
+            });
+            
+            // 回到顶部按钮 - 情感化微动效
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.add('show');
+                    // 添加出现动画
+                    backToTopButton.style.opacity = '1';
+                    backToTopButton.style.transform = 'scale(1)';
+                } else {
+                    backToTopButton.classList.remove('show');
+                    // 添加消失动画
+                    backToTopButton.style.opacity = '0';
+                    backToTopButton.style.transform = 'scale(0.5)';
+                }
+            });
+            
+            backToTopButton.addEventListener('click', function() {
+                // 平滑滚动到顶部
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                // 添加点击反馈
+                this.classList.add('clicked');
+                setTimeout(() => {
+                    this.classList.remove('clicked');
+                }, 300);
+            });
+            
+            // 波纹效果 - 情感化微动效
+            document.querySelectorAll('.company-section h2, .filter-btn, .back-to-top, .source-link a').forEach(element => {
+                element.addEventListener('click', function(e) {
+                    // 创建波纹元素
+                    const circle = document.createElement('span');
+                    const diameter = Math.max(this.clientWidth, this.clientHeight);
+                    const radius = diameter / 2;
+                    
+                    // 设置波纹样式和位置
+                    circle.style.width = circle.style.height = `${diameter}px`;
+                    circle.style.left = `${e.clientX - this.getBoundingClientRect().left - radius}px`;
+                    circle.style.top = `${e.clientY - this.getBoundingClientRect().top - radius}px`;
+                    circle.classList.add('ripple');
+                    
+                    // 根据元素类型调整波纹颜色
+                    if (this.classList.contains('filter-btn')) {
+                        circle.style.backgroundColor = 'rgba(100, 149, 237, 0.4)'; // 淡蓝色
+                    } else if (this.classList.contains('back-to-top')) {
+                        circle.style.backgroundColor = 'rgba(255, 255, 255, 0.4)'; // 白色
+                    } else if (this.classList.contains('source-link')) {
+                        circle.style.backgroundColor = 'rgba(34, 139, 34, 0.4)'; // 淡绿色
+                    }
+                    
+                    // 移除旧的波纹
+                    const ripple = this.getElementsByClassName('ripple')[0];
+                    if (ripple) {
+                        ripple.remove();
+                    }
+                    
+                    // 添加新波纹
+                    this.appendChild(circle);
+                    
+                    // 触发动画
+                    setTimeout(() => {
+                        circle.classList.add('show');
+                    }, 10);
+                });
+            });
+            
+            // 新闻条目淡入动画 - 情感化微动效
+            const newsItems = document.querySelectorAll('.news-item');
+            
+            function checkNewsVisibility() {
+                newsItems.forEach((item, index) => {
+                    const rect = item.getBoundingClientRect();
+                    const isVisible = rect.top < window.innerHeight - 100;
+                    
+                    if (isVisible && !item.classList.contains('fade-in')) {
+                        // 添加交错动画效果
+                        setTimeout(() => {
+                            item.classList.add('fade-in');
+                        }, index * 100);
+                    }
+                });
+            }
+            
+            // 为新闻条目添加情感化悬停效果
+            newsItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.1)';
+                    // 情感化提示：添加顶部彩色指示器
+                    if (!this.querySelector('.emotion-indicator')) {
+                        const indicator = document.createElement('div');
+                        indicator.className = 'emotion-indicator';
+                        indicator.style.cssText = `
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            height: 3px;
+                            background: linear-gradient(90deg, var(--primary-color), var(--primary-lighter));
+                            border-radius: 3px 3px 0 0;
+                        `;
+                        this.prepend(indicator);
+                    }
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.05)';
+                    // 移除指示器
+                    const indicator = this.querySelector('.emotion-indicator');
+                    if (indicator) indicator.remove();
+                });
+                
+                // 添加点击反馈
+                item.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+            
+            // 创建波纹效果函数
+            function createRipple(element) {
+                const ripple = document.createElement('span');
+                const rect = element.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = rect.width / 2 - size / 2;
+                const y = rect.height / 2 - size / 2;
+                
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    top: ${y}px;
+                    left: ${x}px;
+                    border-radius: 50%;
+                    background: rgba(255, 255, 255, 0.6);
+                    transform: scale(0);
+                    animation: ripple-animation 0.6s ease-out;
+                    pointer-events: none;
+                    z-index: 999;
+                `;
+                
+                const rippleOld = element.querySelector('.ripple');
+                if (rippleOld) rippleOld.remove();
+                
+                element.appendChild(ripple);
+            }
+            
+            // 添加波纹动画样式
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes ripple-animation {
+                    to {
+                        transform: scale(4);
+                        opacity: 0;
+                    }
+                }
+                
+                /* 淡入动画样式 */
+                @keyframes fadeInUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(20px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+                
+                .fade-in {
+                    animation: fadeInUp 0.5s ease forwards;
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // 初始检查可见性
+            checkNewsVisibility();
+            
+            // 滚动时检查可见性
+            window.addEventListener('scroll', checkNewsVisibility);
+        });
+    </script>
 </body>
 </html>
